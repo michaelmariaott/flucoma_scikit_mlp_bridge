@@ -107,13 +107,14 @@ if __name__ == '__main__':
   y = read_dataset_from_file(args.y)
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, test_size=0.1)
   mlp = MLPRegressor(
+    hidden_layer_sizes=args.hidden_layers,
     max_iter=args.max_iter, 
     activation=args.activation, 
     learning_rate_init=args.learn_rate,
     early_stopping=args.validation,
     batch_size=args.batch_size,
     momentum=args.momentum,
-    solver='adam',
+    solver=args.solver,
     verbose=True
   )
   if(args.output_activation):
